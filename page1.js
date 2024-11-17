@@ -1,45 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Get elements from the DOM
-    const setReminderBtn = document.getElementById('setReminderBtn');
-    const countdownTimer = document.getElementById('countdownTimer');
-    const reminderTimeInput = document.getElementById('reminderTime');
-  
-    // Function to update the countdown timer
-    function updateCountdown(remainingTime) {
-      const minutes = Math.floor(remainingTime / 60);
-      const seconds = remainingTime % 60;
-      countdownTimer.textContent = `Time left: ${minutes} minutes ${seconds} seconds`;
-    }
-  
-    // Set reminder functionality
-    setReminderBtn.addEventListener('click', function () {
-      const reminderTime = parseInt(reminderTimeInput.value);
-  
-      if (!reminderTime || reminderTime < 1) {
-        alert("Please enter a valid time.");
-        return;
+  // Get form elements
+  const userInfoForm = document.getElementById('userInfoForm');
+  const usernameInput = document.getElementById('username');
+  const ageInput = document.getElementById('age');
+  const waterAmountInput = document.getElementById('waterAmount');
+  const userInfoSection = document.getElementById('userInfoSection');
+  const welcomeMessage = document.getElementById('welcomeMessage');
+  const suggestedWaterIntake = document.getElementById('suggestedWaterIntake');
+
+  // Handle form submission
+  userInfoForm.addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Get user data from form inputs
+      const username = usernameInput.value;
+      const age = parseInt(ageInput.value);
+      const waterAmount = parseFloat(waterAmountInput.value);
+
+      // Validate form data
+      if (!username || !age || !waterAmount) {
+          alert("Please fill in all the fields.");
+          return;
       }
-  
-      let timeRemaining = reminderTime * 60; // Convert minutes to seconds
-      updateCountdown(timeRemaining); // Display the initial time left
-  
-      // Create an audio object for the sound
-      const reminderSound = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Replace with your own sound file if needed
-  
-      // Start countdown
-      const countdownInterval = setInterval(function () {
-        timeRemaining--; // Decrease the remaining time by 1 second
-        updateCountdown(timeRemaining);
-  
-        if (timeRemaining <= 0) {
-          clearInterval(countdownInterval); // Stop the countdown
-          reminderSound.play(); // Play the sound
-          alert("Time's up! Drink water now.");
-          countdownTimer.textContent = "Reminder: Drink Water!";
-        }
-      }, 1000); // Update every second
-    });
-  
+
+      // Display welcome message
+      welcomeMessage.textContent = `Welcome, ${username}!`;
+
+      // Calculate and display suggested water intake (e.g., based on age)
+      let suggestedAmount = 2.7; // Default suggested intake in liters for an average adult
+      if (age < 30) {
+          suggestedAmount = 3; // Increase for younger individuals
+      } else if (age > 60) {
+          suggestedAmount = 2.5; // Decrease for older individuals
+      }
+
+      // Show suggested water intake
+      suggestedWaterIntake.textContent = `Suggested Daily Water Intake: ${suggestedAmount} liters`;
+
+      // Hide the form after submission
+      userInfoForm.style.display = 'none';
+
+      // Show the result section
+      userInfoSection.style.display = 'block';
   });
-  
+
+});

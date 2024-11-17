@@ -14,7 +14,6 @@
   <!-- Font Awesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-
 </head>
 <body>
   <header>
@@ -24,12 +23,10 @@
         <a class="navbar-brand" href="index.html">
           <i class="fas fa-tint"></i> Water Tracker
         </a>
-  
         <!-- Button for responsive toggling -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
         <!-- Navigation items -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
@@ -54,39 +51,6 @@
     </nav>
   </header>
   
-  
-  
-  
-
-
-  <!-- Navigation Bar -->
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Water Tracker</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="page1.html">User Info</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="page2.html">Water Benefits</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="page3.html">Hydration Tips</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
-
-
   <div class="container py-5">
     <h1 class="text-center text-white">Water Intake Tracker</h1>
 
@@ -108,41 +72,106 @@
             <label for="waterAmount" class="form-label">How much water do you drink per day? (in liters)</label>
             <input type="number" class="form-control" id="waterAmount" required>
           </div>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reminderModal">
-            Set Reminder
-          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        <!-- Water Intake Suggestion -->
+        <div id="waterSuggestion" class="mt-4" style="display:none;">
+          <p style="color: #28a745;"><strong>Suggested Water Intake:</strong> <span id="suggestedWaterAmount" style="color: #28a745;"></span> liters.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Reminder Modal -->
-    <div class="modal fade" id="reminderModal" tabindex="-1" aria-labelledby="reminderModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="reminderModalLabel">Set Water Reminder</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="reminderTime" class="form-label">Set reminder time (in minutes)</label>
-              <input type="number" class="form-control" id="reminderTime" min="1" required>
+    <div id="welcomeMessage" class="mt-4" style="display:none;">
+      <h3 style="color: #28a745;">Welcome, <span id="userNameDisplay"></span style="color: #28a745;">! Welcome to our website.</h3>
+    </div>
+
+    <!-- Reminder Box -->
+    <!-- <div class="mt-4">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reminderModal">
+        Set Reminder
+      </button> -->
+
+      <!-- Reminder Modal -->
+      <!-- <div class="modal fade" id="reminderModal" tabindex="-1" aria-labelledby="reminderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="reminderModalLabel">Set Water Reminder</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <button type="button" class="btn btn-success" id="setReminderBtn">Set Reminder</button>
-            <h4 id="countdownTimer" class="mt-4"></h4>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="reminderTime" class="form-label">Set reminder time (in minutes)</label>
+                <input type="number" class="form-control" id="reminderTime" min="1" required>
+              </div>
+              <button type="button" class="btn btn-success" id="setReminderBtn">Set Reminder</button>
+              <h4 id="countdownTimer" class="mt-4"></h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
+  </div> -->
 
+
+  <!-- Water Intake Information Section (Below the Form) -->
+<div id="userInfoSection" class="mt-4">
+  <h2 id="welcomeMessage" class="text-center text-white"></h2>
+  <h3 id="suggestedWaterIntake" class="text-center text-white"></h3>
+</div>
+
+
+<!-- Water Reminder Tab Section -->
+<div class="container mt-5">
+  <h2 class="text-center text-white">Water Reminder</h2>
+
+  <!-- Tab Navigation -->
+  <ul class="nav nav-tabs" id="reminderTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="timer-tab" data-bs-toggle="tab" href="#timer" role="tab" aria-controls="timer" aria-selected="true">Timer</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="log-tab" data-bs-toggle="tab" href="#log" role="tab" aria-controls="log" aria-selected="false">Log</a>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content mt-4">
+    <!-- Timer Tab Content -->
+    <div class="tab-pane fade show active" id="timer" role="tabpanel" aria-labelledby="timer-tab">
+      <h4 style="color: #ffffff;">Set Water Reminder</h4>
+      <!-- Reminder Input Form -->
+      <div class="mb-3">
+        <label for="reminderTimeInput" class="form-label text-white">Set reminder time (in minutes)</label>
+        <input type="number" class="form-control" id="reminderTimeInput" min="1" required>
+      </div>
+      <button id="startStopwatchBtn" class="btn btn-success">Start Timer</button>
+
+      <!-- Countdown Timer -->
+      <div class="d-flex align-items-center mt-4">
+        <h4 id="timerDisplay" class="me-3" style="color: #ffffff;">Time Left: 0 minutes 0 seconds</h4>
+      </div>
+    </div>
+
+    <!-- Log Tab Content -->
+    <div class="tab-pane fade" id="log" role="tabpanel" aria-labelledby="log-tab">
+      <h5 style="color: #ffffff;">Reminder Log</h5>
+      <ul id="logList" class="list-group">
+        <!-- Log messages will be inserted here -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+  
 
   <footer>
     <p>&copy; 2024 Water Tracker | All Rights Reserved</p>
   </footer>
-
-
 
  <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -151,8 +180,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-  
-  <!-- Custom JS -->
-  <script src="page1.js"></script>
+<!-- Custom JS -->
+<script src="page1.js"></script>
 </body>
 </html>
