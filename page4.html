@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Benefits Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="styles.css" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <!-- "Water Tracker" on the left -->
+            <a class="navbar-brand" href="index.html">
+              <i class="fas fa-tint"></i> Water Tracker
+            </a>
+      
+            <!-- Button for responsive toggling -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <!-- Navigation items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link btn-nav" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-nav" href="page1.html">User Info</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-nav" href="page2.html">Water Benefits</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-nav" href="page3.html">Significance Of Water</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn-nav" href="page4.html">Quizes</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+  
+  
+  
+  
+  <main>
+  
+
+
+
+
+<!-- Quiz Container -->
+<div class="container mt-5" id="quizContainer">
+  <h2 class="mb-4 text-white">Water Intake Benefits Quiz</h2>
+
+  <!-- Quiz Questions and Options -->
+  <div class="quiz-box p-4 mb-4" style="border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+    <h4>Answer the following questions:</h4>
+
+    <form id="quizForm">
+      
+        <div class="mb-3">
+        <label for="q1" class="form-label">How much water should an average person drink daily?</label>
+        <div>
+          <input type="radio" name="q1" value="a" id="q1a"> <label for="q1a">1-2 liters</label><br>
+          <input type="radio" name="q1" value="b" id="q1b"> <label for="q1b">2-3 liters</label><br>
+          <input type="radio" name="q1" value="c" id="q1c"> <label for="q1c">3-4 liters</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="q2" class="form-label">What is one of the benefits of drinking water?</label>
+        <div>
+          <input type="radio" name="q2" value="a" id="q2a"> <label for="q2a">Improved digestion</label><br>
+          <input type="radio" name="q2" value="b" id="q2b"> <label for="q2b">Weight loss</label><br>
+          <input type="radio" name="q2" value="c" id="q2c"> <label for="q2c">Better sleep</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="q3" class="form-label">What is the best way to drink water throughout the day?</label>
+        <div>
+          <input type="radio" name="q3" value="a" id="q3a"> <label for="q3a">Drink large amounts at once</label><br>
+          <input type="radio" name="q3" value="b" id="q3b"> <label for="q3b">Drink water in small sips throughout the day</label><br>
+          <input type="radio" name="q3" value="c" id="q3c"> <label for="q3c">Drink only when thirsty</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="q4" class="form-label">What is the best way to drink water throughout the day?</label>
+        <div>
+          <input type="radio" name="q4" value="a" id="q4a"> <label for="q4a">Drink large amounts at once</label><br>
+          <input type="radio" name="q4" value="b" id="q4b"> <label for="q4b">Drink water in small sips throughout the day</label><br>
+          <input type="radio" name="q4" value="c" id="q4c"> <label for="q4c">Drink only when thirsty</label>
+        </div>
+      </div>
+
+
+
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- Quiz Results Section -->
+<div id="quizResults" class="container mt-5" style="display:none;">
+  <h3>Quiz Results:</h3>
+  <p id="score"></p>
+  
+  <!-- Feedback for each question -->
+  <div id="feedback"></div>
+
+  <!-- Navigation Buttons -->
+  <a href="index.html" class="btn btn-primary mt-4">Back to Home</a>
+  <a href="page1.html" class="btn btn-secondary mt-4">Go to User Info</a>
+  <a href="page3.html" class="btn btn-success mt-4">Go to Significance of Water</a>
+  <a href="page2.html" class="btn btn-success mt-4">Go to Water Benefits</a>
+</div>
+</main>
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Water Tracker | All Rights Reserved</p>
+</footer>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script src="quiz.js"></script>
+
+</body>
+</html>
