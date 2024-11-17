@@ -46,3 +46,63 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Get elements from the DOM
+  const startStopwatchBtn = document.getElementById('startStopwatchBtn');
+  const timerDisplay = document.getElementById('timerDisplay');
+  const logList = document.getElementById('logList');
+  const reminderTimeInput = document.getElementById('reminderTimeInput');
+  let countdownInterval;
+
+  // Function to update the countdown display
+  function updateCountdown(remainingTime) {
+    const minutes = Math.floor(remainingTime / 60);
+    const seconds = remainingTime % 60;
+    timerDisplay.textContent = `Time Left: ${minutes} minutes ${seconds} seconds`;
+  }
+
+  // Function to add log message
+  function addLogMessage(message) {
+    const logItem = document.createElement('li');
+    logItem.classList.add('list-group-item');
+    logItem.textContent = message;
+    logList.appendChild(logItem);
+  }
+
+  // Start Stopwatch functionality
+  startStopwatchBtn.addEventListener('click', function () {
+    const reminderTime = parseInt(reminderTimeInput.value);
+
+    // Check if reminder time is valid
+    if (!reminderTime || reminderTime < 1) {
+      alert("Please enter a valid reminder time.");
+      return;
+    }
+
+    let timeRemaining = reminderTime * 60; // Convert minutes to seconds
+    updateCountdown(timeRemaining); // Display the initial time left
+
+    // Add log when timer is started
+    addLogMessage(`Reminder set for ${reminderTime} minutes.`);
+
+    // Start countdown
+    countdownInterval = setInterval(function () {
+      timeRemaining--; // Decrease the remaining time by 1 second
+      updateCountdown(timeRemaining); // Update the timer display
+
+      // When the time reaches 0, stop the countdown and trigger reminder
+      if (timeRemaining <= 0) {
+        clearInterval(countdownInterval); // Stop the countdown
+        addLogMessage("Reminder: Time's up! Drink water now.");
+        alert("Time's up! Drink water now.");
+        timerDisplay.textContent = "Reminder: Drink Water!"; // Show reminder message
+      }
+    }, 1000); // Update every second
+
+    startStopwatchBtn.disabled = true; // Disable the start button once clicked
+  });
+
+});
